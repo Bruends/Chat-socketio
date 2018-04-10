@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- container de escolha de nickname -->
+  <section class="dn join-container container" id="join-container">
+    <form action="#" class="join-form" id="join-form">
+      <label for="join-nickname">Nickname</label>
+      <input type="text" id="join-nickname" class="join-nickname">
+      <button class="join-button">Join!</button>
+    </form>
+  </section>
+
+  <!-- container de salas -->
+  <section class="dn rooms-container">
+    <div>
+      <h2>Open Chat Rooms</h2>
+      <ul class="rooms-list" id="rooms-list">
+        <li class="room-item">
+          <span class="room-name">
+            javascript
+          </span>
+          <span class="room-users">
+            <i class="fa fa-users"></i>  3
+          </span>
+        </li> 
+      </ul>
+    </div>    
+  </section>
+
+  <!-- container chat -->
+  <section class="chat-container">
+    <div class="chat">
+      <div class="chat-info">
+        <h1 class="chat-info-name">Javascript</h1>
+        <span class="chat-count-users">
+          <i class="fa fa-users"></i> 4
+        </span>
+      </div>
+      <ul class="chat-list" id="chat-list">
+        <li class="message message-self">
+          <span class="message-username">
+            <span class="message-username">
+              <i class="fa fa-user"></i> bruno
+            </span>
+          </span>
+          <span class="message-text">sdadsad saldçad</span>     
+        </li>
+        <li class="message-info">Bruno Connected</li>
+        <li class="message">
+          <span class="message-username">
+            <i class="fa fa-user"></i> bruno
+          </span>
+          <span class="message-text">sdadsad saldçad</span>
+        </li>
+      </ul>
+      <form action="#" id="message-form" class="message-form">
+        <input type="text" class="message-input" id="message-input" placeholder="message">
+        <button class="message-button">
+          <i class="fa fa-arrow-right"></i>
+        </button>
+      </form>
+    </div>
+  </section>
+</body>
+</html>
