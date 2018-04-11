@@ -1,4 +1,3 @@
-// funções para gerar elementos html 
 function roomItemHtml(roomName, roomQttUsers){
   var html = '';
   html = '<li id="' + roomName + '" class="room-item" role="button">'

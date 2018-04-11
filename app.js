@@ -4,9 +4,9 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const path = require('path');
 
-// servindo staticos
+// serving statics
 app.use(express.static(path.join(__dirname, 'public')));
-// servindo client do socket.io
+// serving client for socket.io
 app.use(express.static(path.join(__dirname, 'node_modules/socket.io-client')));
 
 let users = [];
@@ -24,22 +24,13 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
   users[socket.id] = {nickname: '', room: ''}
 
+  // send the avaiable rooms 
   socket.emit('update rooms', rooms);
   socket.on('join', (nickname) => {
-    users[socket.id].nickname = nickname;
-    console.log(`user: ${users[socket.id].nickname}`);
-  });
-  
-  socket.on('disconnect', () => {
-    if(users[socket.id].room){
-      socket.to(users[socket.id].room).broadcast.emit('info', `${users[socket.id].nickname} left`);
-      rooms[rooms.findIndex(r => r.name === users[socket.id].room)].users--;
-      io.emit('update rooms', rooms);
-    }
-    delete users[socket.id];
-    console.log('user disconnected');
+    users[socket.id].nickname = nickname;    
   });
 
+  // join in a chat room
   socket.on('select room', (room) => {
     socket.join(room);
     users[socket.id].room = room;
@@ -55,14 +46,24 @@ io.on('connection', (socket) => {
     }
     socket.to(users[socket.id].room).broadcast.emit('message', msgData);
   });
-
+  
+  // disconnect from a room
   socket.on('disconnect room', () => {
     socket.to(users[socket.id].room).broadcast.emit('info', `${users[socket.id].nickname} left`);
     rooms[rooms.findIndex(r => r.name === users[socket.id].room)].users--;
     users[socket.id].room = '';
     io.emit('update rooms', rooms);
     socket.leave(users[socket.id].room);
-  })
+  });
+
+  socket.on('disconnect', () => {
+    if(users[socket.id].room){
+      socket.to(users[socket.id].room).broadcast.emit('info', `${users[socket.id].nickname} left`);
+      rooms[rooms.findIndex(r => r.name === users[socket.id].room)].users--;
+      io.emit('update rooms', rooms);
+    }
+    delete users[socket.id];    
+  });
 });
 
 http.listen(3000, () => {

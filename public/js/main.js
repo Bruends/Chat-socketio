@@ -2,7 +2,7 @@ window.onload = function () {
   var nickname = '';  
 
   var socket = io();
-  // capturando eventos do socket
+  // socket handle events
   socket.on('update rooms', function (rooms) {
     loadRooms(rooms, socket);
   });  
