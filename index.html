@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- container de escolha de nickname -->
+  <section class="join-container container" id="join-container">
+    <form action="#" class="join-form" id="join-form">
+      <label for="join-nickname">Nickname</label>
+      <input type="text" id="join-nickname" class="join-nickname" autocomplete="off" required>
+      <button class="join-button">Join!</button>
+    </form>
+  </section>
+
+  <!-- container de salas -->
+  <section class="rooms-container" id="rooms-container">
+    <div>
+      <h2>Open Chat Rooms</h2>
+      <ul class="rooms-list" id="rooms-list">               
+      </ul>
+    </div>    
+  </section>
+
+  <!-- container chat -->
+  <section class="chat-container" id="chat-container">
+    <div class="chat">
+      <div class="chat-info">
+        <h1 class="chat-info-name">Chat</h1>
+        <button id="return-button" title="return">
+          <i class="fa fa-arrow-left"></i>
+        </button>
+      </div>
+      <ul class="chat-list" id="chat-list">  
+        
+      </ul>
+      <form action="#" id="chat-form" class="message-form">
+        <input type="text" class="message-input" id="chat-input" placeholder="message" autocomplete="off">
+        <button class="message-button">
+          <i class="fa fa-arrow-right"></i>
+        </button>
+      </form>
+    </div>
+  </section>
+  <script src="dist/socket.io.js"></script>
+  <script src="js/generateHtml.js"></script>
+  <script src="js/functions.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

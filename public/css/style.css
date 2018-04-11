@@ -54,7 +54,7 @@ ul {
 
 /* container salas */
 .rooms-container {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   color: #fff;
@@ -103,33 +103,48 @@ ul {
 
 /* container chat */
 .chat-container {
+  display: none;
   overflow: hidden;
-  display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
+  align-items: center;  
 }
 
 .chat{
+  margin-top: 10px;
   position: relative;
   background-color: #fff;
-  height: 90vh;
-  width: 600px;
+  overflow: hidden;
+  width: 60vw;
   min-width: 200px;
-
 }
 
 .chat-info {
+  display: flex;
+  justify-content: space-between;
   padding: 10px 30px;
   background-color: #548468;
   width: 100%;
   color: #fff;
 }
 
+#return-button {
+  background-color: #548468;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
 .chat-list {
-  height: 100%;
-  overflow-y: auto;
+  height: 80vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.message-form {
+  display: flex;  
+  width: 100%;
+  bottom: 0;
 }
 
 .message-info {
@@ -139,7 +154,7 @@ ul {
   background-color: #888;
   width: 150px;
   border-radius: 30px;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
 .message {
@@ -150,7 +165,7 @@ ul {
   border-radius: 4px;
   margin: 10px;
   color: #444;
-  width: 400px;
+  width: 250px;
 }
 
 .message-self {
@@ -168,12 +183,6 @@ ul {
   padding: 10px;
 }
 
-.message-form {
-  display: flex;
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-}
 
 .message-input{
   flex: 3;
@@ -189,6 +198,9 @@ ul {
   background-color: #548468;
 }
 
-.dn{
-  display: none;
+
+@media screen and (max-width: 600px){
+  .chat {
+    width: 100vw;
+  }
 }
